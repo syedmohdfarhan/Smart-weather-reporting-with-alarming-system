@@ -3,20 +3,9 @@ from boltiot import Sms,Bolt
 import time
 import conf
 import json
-url='https://api.openweathermap.org/data/2.5/weather?q=Palakkad,IN&appid=xxxxxxxxxxxxx' //replace with correct appid
+url='https://openweathermap.org/find?utf8=%E2%9C%93&q=lucknow,IN&appid=9605590f270856874a260f44a5fb9918' 
 json_data=requests.get(url).json()
 weather = json_data['weather'][0]['id']
-
-def trigger_integromat_webhook():
-    URL = "https://hook.integromat.com/xxxxxxxxxxxxx" # REPLACE WITH CORRECT URL
-    reply = requests.request("GET", URL)
-    print(reply.text)
-
-def trigger_integromat_webhook1():
-    URL = "https://hook.integromat.com/xxxxxxxxxxxxx" # REPLACE WITH CORRECT URL
-    reply = requests.request("GET", URL)
-    print(reply.text)
-
 mybolt=Bolt(conf.API_KEY,conf.DEVICE_ID)
 sms = Sms(conf.SID, conf.AUTH_TOKEN, conf.TO_NUMBER, conf.FROM_NUMBER)
 
